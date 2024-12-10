@@ -11,8 +11,16 @@ export default {
   	extend: {
   		colors: {
   			background: 'var(--background)',
-  			foreground: 'var(--foreground)'
+  			foreground: 'var(--foreground)',
+			bg: '#FDFCDC',
+			primary: '#0B4F6C',
+			secondary: '#A7C7E7',
+			accent: '#F07167'
   		},
+		fontFamily: {
+			roboto: ["var(--font-roboto)", "sans"],
+			dancingScript: ["var(--font-dancing-script)", "cursive"],
+		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
