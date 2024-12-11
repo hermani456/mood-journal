@@ -21,9 +21,9 @@ export default function Home() {
             </SignInButton>
           </SignedOut>
           <SignedIn>
-            <Link href="/dashboard">
+            <Link href="/journal">
               <button className="bg-accent px-5 py-2 text-bg rounded-xl hover:scale-105 transition-all">
-                Dashboard
+                Journal
               </button>
             </Link>
           </SignedIn>

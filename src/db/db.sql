@@ -28,3 +28,6 @@ CREATE TABLE analysis (
 
 CREATE INDEX idx_entries_user_id ON entries(user_id);
 CREATE INDEX idx_analysis_entry_id ON analysis(entry_id);
+
+
+INSERT INTO entries (user_id, content) VALUES ('user_2q2V9SQpOEt3gE3qavieNjChubs', 'I am feeling great today');
