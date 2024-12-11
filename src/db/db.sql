@@ -11,7 +11,7 @@ CREATE TABLE users (
 
 CREATE TABLE entries (
     id SERIAL PRIMARY KEY,
-    user_id VARCHAR(255) REFERENCES users(id),
+    user_id VARCHAR(255) NOT NULL REFERENCES users(id),
     created_at TIMESTAMP DEFAULT NOW(),
     content TEXT NOT NULL
 );
