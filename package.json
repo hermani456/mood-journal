@@ -10,12 +10,16 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.8.2",
+    "@langchain/openai": "^0.3.14",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "langchain": "^0.3.7",
     "lucide-react": "^0.468.0",
     "next": "15.0.4",
+    "openai": "^4.76.1",
     "pg": "^8.13.1",
     "react": "^19.0.0",
+    "react-autosave": "^0.4.4",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7"

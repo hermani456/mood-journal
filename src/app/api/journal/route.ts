@@ -1,5 +1,6 @@
 import pool from "@/db/db";
 import { auth } from "@clerk/nextjs/server";
+import { revalidatePath } from "next/cache";
 
 import { NextResponse } from "next/server";
 
@@ -9,13 +10,14 @@ export const POST = async (request: Request) => {
   const { userId } = await auth();
 
   try {
-    const data = await pool.query(
-      "INSERT INTO entries (user_id, content) VALUES ($1, $2)",
+    const result = await pool.query(
+      "INSERT INTO entries (user_id, content) VALUES ($1, $2) RETURNING id, created_at, content",
       [userId, content]
     );
-    NextResponse.json({ data }, { status: 201 });
+    revalidatePath("/journal");
+    return NextResponse.json({ result: result.rows[0] }, { status: 201 });
   } catch (e) {
     console.error("Failed to create entry:", e);
-    NextResponse.json({ message: "Failed to create entry" }, { status: 500 });
+    return NextResponse.json({ message: "Failed to create entry" }, { status: 500 });
   }
 };
