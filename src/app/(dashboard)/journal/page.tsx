@@ -23,7 +23,6 @@ const getEntries = async (): Promise<Entry[]> => {
 
 const page = async () => {
   const entries = await getEntries();
-  console.log("entries", entries);
   return (
     <div className="p-10 bg-gray-300/40">
       <h2 className="text-3xl mb-8">Mi Diario</h2>
