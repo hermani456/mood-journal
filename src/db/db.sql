@@ -22,6 +22,7 @@ CREATE TABLE analysis (
     created_at TIMESTAMP DEFAULT NOW(),
     mood VARCHAR(255) NOT NULL,
     summary TEXT NOT NULL,
+    main_topic VARCHAR(255) NOT NULL,
     color VARCHAR(255) NOT NULL,
     negative BOOLEAN NOT NULL
 );
@@ -31,3 +32,5 @@ CREATE INDEX idx_analysis_entry_id ON analysis(entry_id);
 
 
 INSERT INTO entries (user_id, content) VALUES ('user_2q2V9SQpOEt3gE3qavieNjChubs', 'I am feeling great today');
+
+ALTER TABLE analysis ADD COLUMN main_topic VARCHAR(255) NOT NULL;

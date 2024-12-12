@@ -2,47 +2,53 @@ import Editor from "@/components/Editor";
 import { auth } from "@clerk/nextjs/server";
 import pool from "@/db/db";
 
-const getEntry = async (id) => {
+interface Entry {
+  entry_id: string;
+  user_id: string;
+  entry_created_at: string;
+  content: string;
+  analysis_id: string;
+  analysis_created_at: string;
+  mood: string;
+  summary: string;
+  main_topic: string;
+  color: string;
+  negative: boolean;
+}
+
+const getEntry = async (id: string): Promise<Entry> => {
   const { userId } = await auth();
   const { rows } = await pool.query(
-    "SELECT * FROM entries WHERE id = $1 AND user_id = $2",
+    `SELECT 
+    e.id AS entry_id,
+    e.user_id,
+    e.created_at AS entry_created_at,
+    e.content,
+    a.id AS analysis_id,
+    a.entry_id,
+    a.created_at AS analysis_created_at,
+    a.mood,
+    a.summary,
+    a.main_topic,
+    a.color,
+    a.negative
+FROM 
+    entries e
+JOIN 
+    analysis a ON e.id = a.entry_id
+WHERE 
+    e.id = $1 AND e.user_id = $2;`,
     [id, userId]
   );
   return rows[0];
 };
 
-const EntryPage = async ({ params }) => {
+const EntryPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
   const entry = await getEntry(id);
-  const analysisData = [
-    { name: "Summary", value: "ASas" },
-    { name: "Subject", value: "" },
-    { name: "Mood", value: "" },
-    { name: "Negative", value: 'False' },
-  ];
   return (
-    <div className="w-full h-full grid grid-cols-3">
-      <div className="col-span-2">
-        <Editor entry={entry} />
-      </div>
-      <div className="border-l border-black/10">
-        <div className="bg-blue-500 px-6 py-10">
-          <h2 className="text-xl text-white">Analisys</h2>
-        </div>
-        <div>
-          <ul>
-            {analysisData.map((data) => (
-              <li
-                key={data.name}
-                className="px-6 py-4 border-b border-black/10 flex justify-between items-center"
-              >
-                <h3 className="font-semibold">{data.name}</h3>
-                <p>{data.value}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+    <div className="w-full h-full">
+      <Editor entry={entry} />
     </div>
   );
 };

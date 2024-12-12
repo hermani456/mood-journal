@@ -9,11 +9,10 @@ const NewEntryCard = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ content: "default content" }),
+      body: JSON.stringify({ content: "Escribe sobre tu dia" }),
     });
     if (response.ok) {
       const data = await response.json();
-      console.log("data", data);
       router.push(`/journal/${data.result.id}`);
     } else {
       console.error("Failed to create entry:", response);
