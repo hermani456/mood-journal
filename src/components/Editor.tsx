@@ -20,10 +20,10 @@ const Editor = ({ entry }: { entry: Entry }) => {
 
   const { summary, mood, main_topic, negative, color } = analysis;
   const analysisData = [
-    { name: "Summary", value: summary },
-    { name: "Subject", value: main_topic },
-    { name: "Mood", value: mood },
-    { name: "Negative", value: negative ? "True" : "False" },
+    { name: "Resumen", value: summary },
+    { name: "Tema", value: main_topic },
+    { name: "Animo", value: mood },
+    { name: "Negativo", value: negative ? "Si" : "No" },
   ];
 
   useAutosave({
@@ -41,7 +41,7 @@ const Editor = ({ entry }: { entry: Entry }) => {
       <div className="col-span-2">
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75">
-            <div className="text-2xl">Saving...</div>
+            <div className="text-2xl">Guardando...</div>
           </div>
         )}
         <textarea

@@ -1,7 +1,6 @@
 import EntryCard from "@/components/EntryCard";
 import NewEntryCard from "@/components/NewEntryCard";
 import pool from "@/db/db";
-import { analyze } from "@/utils/ai";
 import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 
@@ -24,9 +23,10 @@ const getEntries = async (): Promise<Entry[]> => {
 
 const page = async () => {
   const entries = await getEntries();
+  console.log("entries", entries);
   return (
     <div className="p-10 bg-gray-300/40">
-      <h2 className="text-3xl mb-8">Journal</h2>
+      <h2 className="text-3xl mb-8">Mi Diario</h2>
       <div className="grid grid-cols-3 gap-4">
         <NewEntryCard />
         {entries.length > 0 ? (
@@ -36,7 +36,7 @@ const page = async () => {
             </Link>
           ))
         ) : (
-          <p>No entries found.</p>
+          <p>No se encontraron entradas.</p>
         )}
       </div>
     </div>

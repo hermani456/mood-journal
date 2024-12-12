@@ -8,17 +8,17 @@ interface LayoutProps {
 
 const links = [
   { name: "Home", href: "/" },
-  { name: "Journal", href: "/journal" },
+  { name: "Diario", href: "/journal" },
 ];
 
 const layout = ({ children }: LayoutProps) => {
   return (
     <div className="h-screen w-screen relative">
       <aside className="absolute w-[200px] top-0 left-0 h-full border-r border-black/10">
-        <div>Mood</div>
-        <ul>
+        <div className="font-dancingScript font-semibold text-2xl text-center mt-2">ChatDiary</div>
+        <ul className="mt-5">
           {links.map((link) => (
-            <li key={link.name} className="px-2 py-3 text-xl">
+            <li key={link.name} className="px-5 hover:text-black/30 transition-colors">
               <Link href={link.href}>{link.name}</Link>
             </li>
           ))}
