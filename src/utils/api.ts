@@ -1,4 +1,4 @@
-export const updateEntry = async (id, content) => {
+export const updateEntry = async (id: string, content: string) => {
   const response = await fetch(`/api/journal/${id}`, {
     method: "PATCH",
     headers: {

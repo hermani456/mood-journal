@@ -3,9 +3,8 @@ import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import { analyze } from "@/utils/ai";
 
-export const PATCH = async (request: Request, { params }) => {
+export const PATCH = async (request: Request, { params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
-  console.log("id", id);
   const body = await request.json();
   const { content } = body;
   const { userId } = await auth();
