@@ -14,7 +14,7 @@ const links = [
 const layout = ({ children }: LayoutProps) => {
   return (
     <div className="h-screen w-screen relative">
-      <aside className="absolute w-[200px] top-0 left-0 h-full border-r border-black/10">
+      <aside className="absolute w-[200px] top-0 left-0 h-full border-r border-black/10 hidden lg:block">
         <div className="font-dancingScript font-semibold text-2xl text-center mt-2">ChatDiary</div>
         <ul className="mt-5">
           {links.map((link) => (
@@ -24,7 +24,7 @@ const layout = ({ children }: LayoutProps) => {
           ))}
         </ul>
       </aside>
-      <div className="ml-[200px] h-full">
+      <div className="lg:ml-[200px] h-full">
         <header className="h-[60px] border-b border-black/10">
           <div className="w-full h-full px-6 flex items-center justify-end">
             <UserButton />

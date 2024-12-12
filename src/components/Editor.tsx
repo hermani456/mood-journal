@@ -36,40 +36,40 @@ const Editor = ({ entry }: { entry: Entry }) => {
     },
   });
 
-  return (
-    <div className="w-full h-full grid grid-cols-3">
-      <div className="col-span-2">
-        {isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75">
-            <div className="text-2xl">Guardando...</div>
+    return (
+      <div className="w-full h-full flex flex-col lg:grid lg:grid-cols-3">
+        <div className="lg:col-span-2">
+          {isLoading && (
+            <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75">
+              <div className="text-2xl">Guardando...</div>
+            </div>
+          )}
+          <textarea
+            className="w-full h-full p-8 text-xl outline-none"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+        </div>
+        <div className="border-l border-black/10">
+          <div className="px-6 py-10" style={{ backgroundColor: color }}>
+            <h2 className="text-xl text-white">Análisis</h2>
           </div>
-        )}
-        <textarea
-          className="w-full h-full p-8 text-xl outline-none"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
-      </div>
-      <div className="border-l border-black/10">
-        <div className="px-6 py-10" style={{ backgroundColor: color }}>
-          <h2 className="text-xl text-white">Análisis</h2>
-        </div>
-        <div>
-          <ul>
-            {analysisData.map((data) => (
-              <li
-                key={data.name}
-                className="px-6 py-4 border-b border-black/10 flex justify-between gap-5 items-center"
-              >
-                <h3 className="font-semibold">{data.name}</h3>
-                <p>{data.value}</p>
-              </li>
-            ))}
-          </ul>
+          <div>
+            <ul>
+              {analysisData.map((data) => (
+                <li
+                  key={data.name}
+                  className="px-6 py-4 border-b border-black/10 flex justify-between gap-5 items-center"
+                >
+                  <h3 className="font-semibold">{data.name}</h3>
+                  <p>{data.value}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
 };
 
 export default Editor;

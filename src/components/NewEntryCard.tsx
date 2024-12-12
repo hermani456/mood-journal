@@ -24,7 +24,7 @@ const NewEntryCard = () => {
       onClick={handleOnClick}
     >
       <div className="px-4 py-5 sm:p-6">
-        <span className="text-3xl">Nueva entrada</span>
+        <span className="lg:text-3xl font-semibold">Nueva entrada</span>
       </div>
     </div>
   );
