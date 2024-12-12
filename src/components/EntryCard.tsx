@@ -1,4 +1,10 @@
-const EntryCard = ({ entry }) => {
+interface Entry {
+  id: number;
+  content: string;
+  created_at: Date;
+}
+
+const EntryCard = ({ entry }: { entry: Entry }) => {
   const date = new Date(entry.created_at).toLocaleDateString("es-CL", {
     year: "numeric",
     month: "long",
