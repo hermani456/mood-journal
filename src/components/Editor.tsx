@@ -52,7 +52,7 @@ const Editor = ({ entry }: { entry: Entry }) => {
       </div>
       <div className="border-l border-black/10">
         <div className="px-6 py-10" style={{ backgroundColor: color }}>
-          <h2 className="text-xl text-white">Analisys</h2>
+          <h2 className="text-xl text-white">Análisis</h2>
         </div>
         <div>
           <ul>
